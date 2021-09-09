@@ -1,4 +1,3 @@
-import { Litekart } from '../models'
 import { STATIC_PATH } from '../config'
 import { sysdate } from './date'
 const fileType = require('file-type')
@@ -114,32 +113,6 @@ export const uploadSync = async (docs: any) => {
   //     } catch (e) {
   //   console.log('Sync Upload promise err at lib...', e)
   // }
-}
-
-export const upload = async () => {
-  try {
-    const docs = await Litekart.find({ banner: { $exists: false } }).select(
-      'slug original_image'
-    )
-    const uploadPromises = docs.map(async (d: any) => {
-      const filename =
-        d.slug + '-' + Math.floor(new Date().valueOf() * Math.random())
-      console.log('Upload started... ', `${directory}/${filename}`)
-      try {
-        const c = await cloudinary.uploader.upload(d.original_image, {
-          public_id: `${directory}/${filename}`,
-        })
-        d.banner = IMAGE_CDN + c.public_id
-        await d.save()
-        console.log('Upload success... ', `${directory}/${filename}`)
-      } catch (e) {
-        console.log('Upload err at lib...', e)
-      }
-    })
-    return Promise.all(uploadPromises)
-  } catch (e) {
-    throw e
-  }
 }
 
 export const uploadToCloudinary = async (img: string, filename: string) => {

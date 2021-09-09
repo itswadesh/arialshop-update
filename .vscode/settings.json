@@ -1,0 +1,17 @@
+{
+  "git.ignoreLimitWarning": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    //   "editor.formatOnSave": true,
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "prettier.semi": false,
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "workbench.colorTheme": "Cobalt2",
+  "git.confirmEmptyCommits": false,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "files.eol": "\n"
+}

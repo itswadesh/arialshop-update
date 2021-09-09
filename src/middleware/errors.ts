@@ -1,8 +1,10 @@
 import { RequestHandler, Request, Response, NextFunction } from 'express'
 
-export const catchAsync = (handler: RequestHandler) => (
-  ...args: [Request, Response, NextFunction]
-) => handler(...args).catch(args[2])
+export const catchAsync =
+  (handler: RequestHandler) =>
+  (...args: [Request, Response, NextFunction]) =>
+    // @ts-ignore
+    handler(...args).catch(args[2])
 
 export const notFound = (req: Request, res: Response, next: NextFunction) =>
   res.status(404).json({ message: 'Not Found from Automation' })

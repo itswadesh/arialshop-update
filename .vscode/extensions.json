@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "kumar-harsh.graphql-for-vscode",
+    "esbenp.prettier-vscode",
+    "ms-vscode.sublime-keybindings",
+    "wayou.vscode-todo-highlight",
+    "dbaeumer.vscode-eslint",
+    "humao.rest-client"
+  ]
+}

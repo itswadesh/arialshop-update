@@ -1,5 +1,4 @@
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import { UserDocument } from '../../types'
 
 import passport from 'passport'
 import express from 'express'
@@ -35,7 +34,7 @@ export async function setupGoogle(User: any) {
       },
       async (accessToken: string, refreshToken: string, profile: any, cb) => {
         try {
-          const currentUser: UserDocument | null = await User.findOne({
+          const currentUser = await User.findOne({
             email: profile && profile.emails[0] && profile.emails[0].value,
           })
           if (currentUser) {
@@ -54,10 +53,10 @@ export async function setupGoogle(User: any) {
               google: profile._json,
             })
             // console.log('created new user: ', newUser)
-            const savedUser: UserDocument = await newUser.save()
+            const savedUser = await newUser.save()
             cb(undefined, savedUser)
           }
-        } catch (err) {
+        } catch (err: any) {
           // console.log('error at find user ', err)
           cb(err)
         }

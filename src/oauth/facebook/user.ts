@@ -1,5 +1,4 @@
 import { Strategy as FacebookStrategy } from 'passport-facebook'
-import { UserDocument } from '../../types'
 
 import passport from 'passport'
 import express from 'express'
@@ -33,7 +32,7 @@ export async function setupFacebook(User: any) {
       },
       async (accessToken: string, refreshToken: string, profile: any, cb) => {
         try {
-          const currentUser: UserDocument | null = await User.findOne({
+          const currentUser = await User.findOne({
             email: profile && profile.emails[0] && profile.emails[0].value,
           })
           if (currentUser) {
@@ -52,7 +51,7 @@ export async function setupFacebook(User: any) {
               facebook: profile._json,
             })
             // console.log('created new user: ', newUser)
-            const savedUser: UserDocument = await newUser.save()
+            const savedUser = await newUser.save()
             cb(null, savedUser)
           }
         } catch (err) {

@@ -4,7 +4,9 @@ import { Request, Response } from 'express'
 import passport from 'passport'
 
 export const logIn = (req: Request, userId: string) => {
+  // @ts-ignore
   req.session!.userId = userId
+  // @ts-ignore
   req.session!.createdAt = Date.now()
 }
 
@@ -38,6 +40,7 @@ export const localLogin = async (
   })
 }
 
+// @ts-ignore
 export const isLoggedIn = (req: Request): boolean => !!req.session!.userId
 
 export const ensureSignedIn = (req: Request): void => {
@@ -54,6 +57,7 @@ export const ensureSignedOut = (req: Request): void => {
 
 export const logOut = (req: Request, res: Response): Promise<boolean> =>
   new Promise((resolve, reject) => {
+    // @ts-ignore
     req.session!.userId = null
     resolve(true)
     // req.session!.destroy((err: Error) => {
@@ -75,12 +79,14 @@ export const resetPassword = async (user: UserDocument, password: string) => {
   await user.save()
 }
 
-passport.serializeUser((user: UserDocument, done) => {
+passport.serializeUser((user, done) => {
+  // @ts-ignore
   done(null, user._id)
 })
 
 passport.deserializeUser((id, done) => {
-  User.findOne({ _id: id }, (err: Error, user: UserDocument) => done(err, user)) // gets called on each req :-/
+  // @ts-ignore
+  User.findById(_id, (err: Error, user: UserDocument) => done(err, user)) // gets called on each req :-/
 })
 
 export default passport

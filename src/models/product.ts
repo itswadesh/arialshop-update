@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-import { generateSlugShopNx } from '../utils'
+import { generateSlug } from '../utils'
 const { ObjectId } = Schema.Types
 
 var productSchema = new Schema(
@@ -37,7 +37,7 @@ var productSchema = new Schema(
 
 productSchema.pre('save', async function () {
   var doc: any = this
-  if (!doc.slug) doc.slug = await generateSlugShopNx(doc.name)
+  if (!doc.slug) doc.slug = await generateSlug(doc.name)
 })
 
 productSchema.index({
@@ -46,7 +46,7 @@ productSchema.index({
 
 productSchema.pre('save', async function () {
   var doc: any = this
-  if (!doc.slug) doc.slug = await generateSlugShopNx(doc.name)
+  if (!doc.slug) doc.slug = await generateSlug(doc.name)
 })
 
 export const Product = mongoose.model('Product', productSchema)
