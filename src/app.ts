@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 import session, { Store } from 'express-session'
-import { GithubCategories } from './models'
 import cron from 'node-cron'
 import oAuthRoutes from './oauth'
 
@@ -12,19 +11,9 @@ import {
   register,
   verify,
   reset,
-  lessons,
-  litekart,
-  ff,
-  tags,
   categories,
-  posts,
   products,
-  authors,
-  flipkart,
-  youtube,
   user,
-  tech,
-  cheerio,
 } from './routes'
 import passport from 'passport'
 import { notFound, serverError, active } from './middleware'
@@ -48,20 +37,8 @@ export const createApp = (store: Store) => {
   app.use(active)
 
   app.use(user)
-  app.use(posts)
   app.use(products)
-  app.use(authors)
-  app.use(ff)
-  app.use(tech)
-  app.use(flipkart)
-  app.use(youtube)
-  app.use(tags)
   app.use(categories)
-  app.use(cheerio)
-
-  app.use(lessons)
-
-  app.use(litekart)
 
   app.use(home)
 
