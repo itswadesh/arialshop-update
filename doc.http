@@ -1,0 +1,37 @@
+# Rest Client
+
+# @baseUrl = https://automation.litekart.in
+@baseUrl = http://localhost:3330
+
+### Get a random clever quote
+GET {{baseUrl}}/api/github?page=2
+
+### Update featured status
+PUT {{baseUrl}}/api/github/5eb8fe2471931682f0af49d8
+content-type: application/json
+
+{
+    "featured": true,
+    "active": true
+}
+
+### Delete record
+DELETE {{baseUrl}}/api/github/5eb8fe2471931682f0af49d8
+
+###
+GET {{baseUrl}}/api/github/list?q=wordpress-theme&stars=100
+
+###
+GET {{baseUrl}}/api/github/grab?q=flutter-ui&stars=100
+
+###
+GET {{baseUrl}}/api/litekart/grab
+
+###
+GET {{baseUrl}}/api/lessons/grab?q=vue
+
+###
+GET {{baseUrl}}/api/github/grab?q=wordpress-themes&stars=100
+
+### 
+GET {{baseUrl}}/api/litekart/grab
