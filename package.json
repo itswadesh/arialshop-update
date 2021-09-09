@@ -16,7 +16,6 @@
   "author": "Swadesh Behera <swadesh@misiki.in>",
   "license": "MIT",
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "@sendgrid/mail": "^7.4.6",
     "@sentry/node": "^6.12.0",
     "apac": "^3.0.2",
@@ -45,6 +44,7 @@
     "ioredis": "^4.27.9",
     "isomorphic-fetch": "^3.0.0",
     "mkdirp": "^1.0.4",
+    "joi": "^17.3.0",
     "mongoose": "^5.12.14",
     "mongoose-elasticsearch-xp": "^5.8.0",
     "node-cron": "^3.0.0",
@@ -77,7 +77,6 @@
     "@types/express-session": "^1.17.4",
     "@types/fs-extra": "^9.0.12",
     "@types/handlebars": "^4.1.0",
-    "@types/hapi__joi": "^17.1.7",
     "@types/ioredis": "^4.27.2",
     "@types/mkdirp": "^1.0.2",
     "@types/mongodb": "^4.0.7",
